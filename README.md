@@ -1,5 +1,8 @@
 # real-world-vue
 
+* [Nuggets](docs/index.md)
+
+
 ## Project setup
 ```
 yarn install
