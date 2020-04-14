@@ -1,15 +1,14 @@
 <template>
-    <div>
-        Event Details
-    </div>
+  <div>
+    Event Details {{ id }}
+
+  </div>
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {
+  props: ['id']
+}
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
