@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     // map this.events to store.state.events
-    ...mapState(['events'])
+    ...mapState(['events']),
   },
 }
 </script>

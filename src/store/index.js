@@ -18,5 +18,10 @@ export default new Vuex.Store({
       getEvents().then(events => commit('SET_EVENTS', events))
     }
   },
+  getters: {
+    getEventById: state => id => {
+      return state.events.find(event => event.id === id);
+    }
+  },
   modules: {}
 });
