@@ -18,7 +18,6 @@
       <div class="poster p1">
         <h4>
           {{ event.time }}
-          pm
         </h4>
       </div>
     </div>
@@ -95,7 +94,7 @@ export default {
   border-radius: 100px;
 }
 .poster h4 {
-  top: 16px;
+  top: 36px;
   color: #fff;
   position: relative;
   font-size: 40px;

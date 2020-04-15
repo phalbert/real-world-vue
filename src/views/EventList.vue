@@ -17,7 +17,7 @@ import EventCard from '../components/EventCard'
 export default {
   data() {
     return {
-      events: null
+      events: []
     }
   },
   components: {
