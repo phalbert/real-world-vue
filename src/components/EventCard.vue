@@ -11,7 +11,7 @@
         {{ event.title }} <br />
         <span>
           <base-icon name="users" style="color: white;">
-          {{ event.attendees.length }} attending
+          {{ event.attendees }} attending
           </base-icon>
         </span>
       </h1>
@@ -27,19 +27,12 @@
 
 <script>
 export default {
-  data() {
-    return {
-      event: {
-        title: 'Park Event',
-        date: 'Tue 19 Aug, 2019',
-        time: '19:00',
-        attendees: [
-          { id: 1, name: 'John Evans' },
-          { id: 2, name: 'Jim Rohn' }
-        ]
-      }
-    }
-  }
+  props: {
+    event: {
+      type: Object, 
+      required: true
+    },
+  },
 }
 </script>
 

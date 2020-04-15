@@ -33,7 +33,7 @@ export default {}
   text-decoration: none;
 }
 .nav .nav-item.router-link-exact-active {
-  color: #39b982;
+  color: #164f69;
   border-bottom: solid 2px #39b982;
 }
 </style>

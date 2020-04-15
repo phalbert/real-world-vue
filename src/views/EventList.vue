@@ -3,21 +3,30 @@
     <h4>Event List</h4>
     <br />
     <br />
-    <div class="wrap">
-      <event-card />
-      <event-card />
-      <event-card />
-      <event-card />
+    <div v-if="!events"><base-loader /></div>
+    <div v-else class="wrap">
+      <event-card v-for="event in events" :key="event.id" :event="event"/>
     </div>
   </div>
 </template>
 
 <script>
+import { getEvents } from '@/services/events.js'
 import EventCard from '../components/EventCard'
+
 export default {
+  data() {
+    return {
+      events: null
+    }
+  },
   components: {
     EventCard
-  }
+  },
+  async created () {
+    this.events = await getEvents();
+    console.log(this.events)
+  },
 }
 </script>
 
