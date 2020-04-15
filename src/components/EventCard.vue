@@ -5,12 +5,13 @@
   >
     <div class="box one">
       <div class="date">
-        <h4>{{ event.date }}</h4>
+        <h4>{{ event.date }} </h4>
       </div>
       <h1>
-        {{ event.title }} <br /><span
-          >{{ event.attendees.length }} attending</span
-        >
+        {{ event.title }} <br />
+        <span><base-icon name="users" style="color: white;"/>
+          {{ event.attendees.length }} attending
+        </span>
       </h1>
       <div class="poster p1">
         <h4>
