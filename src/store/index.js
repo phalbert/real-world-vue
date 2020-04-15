@@ -1,11 +1,22 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { getEvents } from '@/services/events.js'
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
+  state: {
+    events: []
+  },
+  mutations: {
+    SET_EVENTS(state, events) {
+      state.events = events
+    }
+  },
+  actions: {
+    fetchEvents({ commit }) {
+      getEvents().then(events => commit('SET_EVENTS', events))
+    }
+  },
   modules: {}
 });

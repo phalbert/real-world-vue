@@ -5,27 +5,28 @@
     <br />
     <div v-if="!events"><base-loader /></div>
     <div v-else class="wrap">
-      <event-card v-for="event in events" :key="event.id" :event="event"/>
+      <event-card v-for="event in events" :key="event.id" :event="event" />
     </div>
   </div>
 </template>
 
 <script>
-import { getEvents } from '@/services/events.js'
+import { mapActions, mapState } from 'vuex'
 import EventCard from '../components/EventCard'
 
 export default {
-  data() {
-    return {
-      events: []
-    }
-  },
   components: {
     EventCard
   },
+  methods: {
+    ...mapActions(['fetchEvents']),
+  },
   async created () {
-    this.events = await getEvents();
-    console.log(this.events)
+    await this.fetchEvents();
+  },
+  computed: {
+    // map this.events to store.state.events
+    ...mapState(['events'])
   },
 }
 </script>
