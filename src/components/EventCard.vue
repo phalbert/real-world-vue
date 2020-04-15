@@ -9,8 +9,10 @@
       </div>
       <h1>
         {{ event.title }} <br />
-        <span><base-icon name="users" style="color: white;"/>
+        <span>
+          <base-icon name="users" style="color: white;">
           {{ event.attendees.length }} attending
+          </base-icon>
         </span>
       </h1>
       <div class="poster p1">
