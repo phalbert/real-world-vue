@@ -1,25 +1,27 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 import EventList from '../views/EventList'
 import EventShow from '../views/EventShow'
 import store from '@/store/index'
+import NProgress from 'nprogress'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
-    name: "event-list",
-    component: EventList
+    path: '/',
+    name: 'event-list',
+    component: EventList,
+    props: true
   },
   {
-    path: "/event/:id",
-    name: "event-show",
+    path: '/event/:id',
+    name: 'event-show',
     component: EventShow,
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       store
-        .dispatch('fetchEvent', routeTo.params.id)
+        .dispatch('event/fetchEvent', routeTo.params.id)
         .then(event => {
           routeTo.params.event = event
           next()
@@ -34,20 +36,29 @@ const routes = [
     }
   },
   {
-    path: "/event/create",
-    name: "event-create",
+    path: '/event/create',
+    name: 'event-create',
     // route level code-splitting
     // this generates a separate chunk (event-create.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "event-create" */ "../views/EventCreate.vue")
+      import(/* webpackChunkName: "event-create" */ '../views/EventCreate.vue')
   }
-];
+]
 
 const router = new VueRouter({
-  mode: "history",
+  mode: 'history',
   base: process.env.BASE_URL,
   routes
-});
+})
 
-export default router;
+router.beforeEach((routeTo, routeFrom, next) => {
+  NProgress.start()
+  next()
+})
+
+router.afterEach(() => {
+  NProgress.done()
+})
+
+export default router

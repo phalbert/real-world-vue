@@ -3,34 +3,76 @@
     <h4>Event List</h4>
     <br />
     <br />
-    <div v-if="!events"><base-loader /></div>
-    <div v-else class="wrap">
-      <event-card v-for="event in events" :key="event.id" :event="event" />
+    <div class="wrap">
+      <event-card
+        v-for="event in event.events"
+        :key="event.id"
+        :event="event"
+      />
     </div>
+    <br />
+    <template v-if="page != 1">
+      <router-link
+        :to="{ name: 'event-list', query: { page: page - 1 } }"
+        rel="prev"
+      >
+        Prev Page</router-link
+      >
+      <template v-if="hasNextPage"> | </template>
+    </template>
+    <router-link
+      v-if="hasNextPage"
+      :to="{ name: 'event-list', query: { page: page + 1 } }"
+      rel="next"
+    >
+      Next Page</router-link
+    >
+    <br />
+    <base-icon />
   </div>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
-import EventCard from '../components/EventCard'
+import EventCard from '@/components/EventCard.vue'
+import { mapState } from 'vuex'
+import store from '@/store/index'
+
+function getPageEvents(routeTo, next) {
+  const currentPage = parseInt(routeTo.query.page) || 1
+  store
+    .dispatch('event/fetchEvents', {
+      page: currentPage
+    })
+    .then(() => {
+      routeTo.params.page = currentPage
+      next()
+    })
+}
 
 export default {
+  props: {
+    page: {
+      type: Number,
+      required: true
+    }
+  },
   components: {
     EventCard
   },
-  methods: {
-    ...mapActions(['fetchEvents']),
+  beforeRouteEnter(routeTo, routeFrom, next) {
+    getPageEvents(routeTo, next)
   },
-  async created () {
-    await this.fetchEvents();
+  beforeRouteUpdate(routeTo, routeFrom, next) {
+    getPageEvents(routeTo, next)
   },
   computed: {
-    // map this.events to store.state.events
-    ...mapState(['events']),
-  },
+    ...mapState(['event']),
+    hasNextPage() {
+      return this.event.eventsTotal > this.page * this.event.perPage
+    }
+  }
 }
 </script>
-
 <style scoped>
 .conatiner {
   width: 100%;

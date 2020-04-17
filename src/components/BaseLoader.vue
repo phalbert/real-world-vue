@@ -30,7 +30,7 @@ export default {}
   left: 0;
   width: 100%;
   height: 100%;
-  background-color:whitesmoke;
+  background-color: whitesmoke;
 }
 
 /* :not(:required) hides these rules from IE9 and below */
