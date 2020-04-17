@@ -20,3 +20,23 @@
 
 ![](assets/router-5.png)
 
+![](assets/router-6.png)
+
+
+### Global usage of NProgress for every navigation in your app.
+
+![](assets/router-7.png)
+
+#### Be careful to wait for API calls to return
+
+1. Solution 1
+
+![](assets/router-8.png)
+
+2. Solution 2
+
+![](assets/router-9.png)
+
+**Calling Order**
+
+![](assets/router-10.png)

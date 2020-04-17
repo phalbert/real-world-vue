@@ -40,35 +40,15 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import NProgress from 'nprogress'
-import store from '@/store/index'
-
 export default {
-  props: ['id'],
-  beforeRouteEnter(routeTo, routeFrom, next) {
-    NProgress.start()
-
-    store.dispatch('fetchEvent', routeTo.params.id).then(() => {
-      NProgress.done()
-      next()
-    })
-  },
-  computed: mapState(['event']),
-  // data() {
-  //   return {
-  //     event: null
-  //   }
-  // }
-  // computed: {
-  //   ...mapGetters(['getEventById'])
-  // },
-  // created() {
-  //   this.event = this.getEventById(this.id)
-  // }
+  props: {
+    event: {
+      type: Object,
+      required: true
+    }
+  }
 }
 </script>
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700|Work+Sans:100,200,300,400,500,600');
 :root {
