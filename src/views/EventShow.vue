@@ -40,20 +40,32 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState } from 'vuex'
+import NProgress from 'nprogress'
+import store from '@/store/index'
+
 export default {
   props: ['id'],
-  data() {
-    return {
-      event: null
-    }
+  beforeRouteEnter(routeTo, routeFrom, next) {
+    NProgress.start()
+
+    store.dispatch('fetchEvent', routeTo.params.id).then(() => {
+      NProgress.done()
+      next()
+    })
   },
-  computed: {
-    ...mapGetters(['getEventById'])
-  },
-  mounted() {
-    this.event = this.getEventById(this.id)
-  }
+  computed: mapState(['event']),
+  // data() {
+  //   return {
+  //     event: null
+  //   }
+  // }
+  // computed: {
+  //   ...mapGetters(['getEventById'])
+  // },
+  // created() {
+  //   this.event = this.getEventById(this.id)
+  // }
 }
 </script>
 
