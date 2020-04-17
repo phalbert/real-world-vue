@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import EventList from '../views/EventList'
-import EventShow from '../views/EventShow'
+import EventList from '@/views/EventList'
+import EventShow from '@/views/EventShow'
+import NotFound from '@/views/NotFound'
+import NetworkIssue from '@/views/NetworkIssue'
 import store from '@/store/index'
 import NProgress from 'nprogress'
 
@@ -43,6 +45,22 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "event-create" */ '../views/EventCreate.vue')
+  },
+  {
+    path: '/not-found',
+    name: '404',
+    component: NotFound,
+    props: true
+  },
+  {
+    path: '/network-issue',
+    name: 'network-issue',
+    component: NetworkIssue,
+    props: true
+  },
+  {
+    path: '*',
+    redirect: { name: '404' }
   }
 ]
 

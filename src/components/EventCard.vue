@@ -17,7 +17,7 @@
       </h1>
       <div class="poster p1">
         <h4>
-          {{ event.time }}
+          {{ event.id }}
         </h4>
       </div>
     </div>

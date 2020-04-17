@@ -15,24 +15,21 @@
             <h2 class="recipe-title">{{ event.title }}</h2>
             <div class="user-rating"></div>
           </div>
-          <h2>{{ event.date }}</h2>
+          <h4>Location: {{ event.location }}</h4>
           <ul class="recipe-details">
             <li class="recipe-details-item time">
               <i class="ion ion-ios-clock-outline"></i
               ><span class="value">{{ event.attendes }}</span
-              ><span class="title">Attendes</span>
+              ><span class="title">Attendees</span>
             </li>
             <li class="recipe-details-item ingredients">
               <i class="ion ion-ios-book-outline"></i
-              ><span class="value">{{ event.date }}</span
-              ><span class="title">Time</span>
+              ><span class="value">{{ event.id }}</span
+              ><span class="title">Id</span>
             </li>
           </ul>
         </header>
-        <p class="description">
-          There’s no better way to celebrate May being National Strawberry Month
-          than by sharing a sweet treat with your pup!!! Strawberries...
-        </p>
+        <p class="description">{{ event.description }}</p>
         <footer class="content__footer"><a href="#">View Recipe</a></footer>
       </div>
     </div>
