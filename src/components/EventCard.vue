@@ -5,13 +5,13 @@
   >
     <div class="box one">
       <div class="date">
-        <h4>{{ event.date }} </h4>
+        <h4>{{ event.date }}</h4>
       </div>
       <h1>
         {{ event.title }} <br />
         <span>
           <base-icon name="users" style="color: white;">
-          {{ event.attendees }} attending
+            {{ event.attendes }} attending
           </base-icon>
         </span>
       </h1>
@@ -28,10 +28,10 @@
 export default {
   props: {
     event: {
-      type: Object, 
+      type: Object,
       required: true
-    },
-  },
+    }
+  }
 }
 </script>
 

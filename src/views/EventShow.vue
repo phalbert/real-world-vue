@@ -1,6 +1,6 @@
 <template>
   <div>
-    Event Details {{ id }}
+    Event Details {{ event.id }}
 
     <div class="ft-recipe">
       <div class="ft-recipe__thumb">
@@ -19,13 +19,13 @@
           <ul class="recipe-details">
             <li class="recipe-details-item time">
               <i class="ion ion-ios-clock-outline"></i
-              ><span class="value">{{ event.attendees }}</span
-              ><span class="title">attendees</span>
+              ><span class="value">{{ event.attendes }}</span
+              ><span class="title">Attendes</span>
             </li>
             <li class="recipe-details-item ingredients">
               <i class="ion ion-ios-book-outline"></i
-              ><span class="value">{{ event.time }}</span
-              ><span class="title">time</span>
+              ><span class="value">{{ event.date }}</span
+              ><span class="title">Time</span>
             </li>
           </ul>
         </header>
@@ -40,23 +40,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
 export default {
-  props: ['id'],
-  data() {
-    return {
-      event: null
+  props: {
+    event: {
+      type: Object,
+      required: true
     }
-  },
-  computed: {
-    ...mapGetters(['getEventById'])
-  },
-  mounted() {
-    this.event = this.getEventById(this.id)
   }
 }
 </script>
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700|Work+Sans:100,200,300,400,500,600');
 :root {
